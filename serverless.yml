@@ -1,0 +1,33 @@
+service: manage-lambda-layers
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+package:
+  individually: true
+  excludeDevDependencies: true
+  include:
+    - node_modules/**
+    - src/**
+
+custom:
+  serverless-offline:
+    port: 4000
+  webpack:
+    includeModules:
+      forceExclude:
+        - aws-sdk
+        - moment
+      
+provider:
+  name: aws
+  region: ${opt:region, 'us-east-1'}
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  versionFunctions: false
+
+functions:
+  getCurrentTime:
+    handler: src/functions/getTime.handler
+    name: ${self:service}-${self:provider.stage}-get-current-time
