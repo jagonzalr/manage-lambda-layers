@@ -2,6 +2,7 @@ import moment from 'moment'
 
 export const handler = async event => {
   const currentDatetTime = moment().format('LLLL')
+  
   return {
     statusCode: 200,
     body: JSON.stringify({ currentDatetTime }),

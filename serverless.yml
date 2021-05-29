@@ -18,6 +18,14 @@ custom:
     includeModules:
       forceExclude:
         - moment
+
+layers:
+  moment:
+    path: layers/moment
+    name: ${self:service}-${self:provider.stage}-moment
+    description: moment npm module
+    compatibleRuntimes:
+      - nodejs14.x
       
 provider:
   name: aws
@@ -28,7 +36,7 @@ provider:
 
 functions:
   getCurrentDateTime:
-    handler: src/functions/getCurrentDatetTime.handler
+    handler: src/functions/getCurrentDateTime.handler
     name: ${self:service}-${self:provider.stage}-get-current-date-time
     events:
       - http:
