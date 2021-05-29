@@ -89,22 +89,22 @@ resource "aws_cloudwatch_log_group" "log" {
 */
 
 // Layer
-resource "aws_lambda_layer_version" "layer" {
+resource "aws_lambda_layer_version" "moment_layer" {
   filename   = local.layer_zip_path
-  layer_name = "${local.name}-layer"
+  layer_name = "${local.name}-moment"
 
   compatible_runtimes = ["nodejs14.x"]
 }
 
 // Function
 resource "aws_lambda_function" "func" {
-  depends_on = [aws_lambda_layer_version.layer]
+  depends_on = [aws_lambda_layer_version.moment_layer]
 
   filename          = local.lambda_zip_path
   function_name     = local.name
   role              = aws_iam_role.lambda.arn
   handler           = local.lambda_handler
-  layers            = [aws_lambda_layer_version.layer.arn]
+  layers            = [aws_lambda_layer_version.moment_layer.arn]
   source_code_hash  = filebase64sha256(local.lambda_zip_path)
   runtime           = "nodejs14.x"
   memory_size       = 1024
