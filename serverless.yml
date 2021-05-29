@@ -17,7 +17,6 @@ custom:
   webpack:
     includeModules:
       forceExclude:
-        - aws-sdk
         - moment
       
 provider:
@@ -28,6 +27,11 @@ provider:
   versionFunctions: false
 
 functions:
-  getCurrentTime:
-    handler: src/functions/getTime.handler
-    name: ${self:service}-${self:provider.stage}-get-current-time
+  getCurrentDateTime:
+    handler: src/functions/getCurrentDatetTime.handler
+    name: ${self:service}-${self:provider.stage}-get-current-date-time
+    events:
+      - http:
+          path: getCurrentDateTime
+          method: get
+          cors: true
