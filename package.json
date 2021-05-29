@@ -21,7 +21,6 @@
   "homepage": "https://github.com/jagonzalr/event-driven-architecture-example#readme",
   "dependencies": {
     "@babel/runtime": "^7.14.0",
-    "aws-sdk": "^2.913.0",
     "moment": "^2.29.1"
   },
   "devDependencies": {
