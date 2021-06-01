@@ -4,6 +4,11 @@ echo -e "\n+++++ Starting deployment +++++\n"
 
 tfswitch 0.15.3
 
+echo -e "\n--- Install layers packages---\n"
+cd layers/moment/nodejs
+npm install
+cd ../../..
+
 echo -e "\n--- Packaging lambda ---\n"
 npm run package
 
