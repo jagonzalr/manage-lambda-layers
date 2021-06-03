@@ -1,11 +1,11 @@
 import moment from 'moment'
 
 export const handler = async event => {
-  const currentDatetTime = moment().format('LLLL')
+  const currentDateTime = moment().format('LLLL')
   
   return {
     statusCode: 200,
-    body: JSON.stringify({ currentDatetTime }),
+    body: JSON.stringify({ currentDateTime }),
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true,
