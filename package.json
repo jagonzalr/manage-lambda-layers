@@ -7,7 +7,7 @@
     "start": "NODE_ENV=development BABEL_ENV=development serverless offline start --watch --noTimeout",
     "package": "serverless package",
     "deploy": "./deploy.sh",
-    "destroy": "./deploy.sh"
+    "destroy": "./destroy.sh"
   },
   "repository": {
     "type": "git",
